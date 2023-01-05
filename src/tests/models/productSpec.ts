@@ -1,6 +1,7 @@
 import { ProductStore } from '../../models/product';
 
 const store = new ProductStore();
+let id:number;
 
 describe('Product Model', () => {
   it('should create a product', async () => {
@@ -8,7 +9,7 @@ describe('Product Model', () => {
       name: 'Test Product',
       price: 1000,
     });
-    console.info('This is the product model test log');
+    id = result.id;
 
     expect(result).toEqual({
       id: result.id,
@@ -18,7 +19,7 @@ describe('Product Model', () => {
   });
 
   it('should return a product', async () => {
-    const result = await store.show(1);
+    const result = await store.show(id);
     expect(result).toEqual({
       id: result.id,
       name: 'Test Product',

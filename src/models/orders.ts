@@ -29,7 +29,7 @@ export class OrderStore {
     }
   }
 
-  async show(id: string, user_id: number) {
+  async show(id: number, user_id: number) {
     try {
       const conn = await client.connect();
       const result = await conn.query(

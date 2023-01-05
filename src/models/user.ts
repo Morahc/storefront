@@ -34,13 +34,14 @@ export class UserStore {
   async auth(query: loginUser): Promise<user> {
     const { email, password } = query;
     try {
+      console.log(email, password);
       const conn = await client.connect();
       const result = await conn.query('SELECT * FROM users WHERE email=$1', [email]);
       if (!result.rows[0]) {
         throw `user with email ${email} not found`;
       }
       const match = await comparePassword(password, result.rows[0].password);
-
+      console.log(match);
       if (!match) {
         throw 'Incorrect password';
       }
@@ -54,7 +55,7 @@ export class UserStore {
   async show(id: number): Promise<user> {
     try {
       const conn = await client.connect();
-      const result = await conn.query('SELECT * FROM users WHERE id=$1', [id]);
+      const result = await conn.query('SELECT id, firstname, lastname, email FROM users WHERE id=$1', [id]);
 
       conn.release();
       return result.rows[0];

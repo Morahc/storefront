@@ -15,7 +15,7 @@ const index = async (req: Request, res: Response) => {
 
 const show = async (req: Request, res: Response) => {
   try {
-    const id = req.params.id;
+    const id = req.params.id as unknown as number;
 
     if (!id) {
       res.status(400);

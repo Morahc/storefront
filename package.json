@@ -7,10 +7,11 @@
     "start": "nodemon src/server.ts",
     "lint": "eslint ./src --ext .ts --fix",
     "create-dev-db": "db-migrate --config database_create.json db:create storefront && db-migrate up --env dev",
-    "create-test-db": "db-migrate --config database_create.json db:create storefront_test && db-migrate up --env test",
-    "test": "npm run tsc && SET NODE_ENV=test && jasmine && db-migrate reset --env test",
+    "create-test-db": "db-migrate --config database_create.json db:create storefront_test",
+    "reset-db": "db-migrate reset --env test",
+    "test": "npm run tsc && npm run reset-db && db-migrate up --env test && npm run jasmine",
     "tsc": "tsc",
-    "jasmine": "jasmine"
+    "jasmine": "npx jasmine"
   },
   "author": "Morah Stephen",
   "license": "ISC",
