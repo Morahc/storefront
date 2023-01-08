@@ -34,28 +34,28 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 ### Product
 
-- id
-- name
-- price
+- id `INT PRIMARY KEY`
+- name `VARCHAR`
+- price `INT`
 
 ### User
 
-- id
-- firstName
-- lastName
-- email
-- password
+- id `INT PRIMARY KEY`
+- firstName `VARCHAR`
+- lastName `VARCHAR`
+- email `VARCHAR`
+- password `VARCHAR`
 
 ### Order
 
-- id
-- user_id
-- status (active or complete)
+- id `INT PRIMARY KEY`
+- user_id `FOREIGN KEY REFERENCES users`
+- status (active or complete) `VARCHAR`
 -
 
 ### Order Items
 
-- id
-- quantity
-- order_id
-- quantity
+- id `INT PRIMARY KEY`
+- quantity `INT`
+- order_id `FOREIGN KEY REFERENCES orders`
+- product_id `FOREIGN KEY REFERENCES products`

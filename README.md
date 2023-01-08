@@ -10,6 +10,9 @@ run `npm run create-dev-db` to create database `storefront` and run migrations o
 ## Test mode
 To run test `npm test`, create test database by running `npm run create-test-db` to create database `storefront_test` and run migrations on test database
 
+### Ports
+The application runs on port `3000` with database on `5432`.
+
 ### Environment variables 
 To satisfy Udacity requirements, the following environment variable are needed.
 ```
